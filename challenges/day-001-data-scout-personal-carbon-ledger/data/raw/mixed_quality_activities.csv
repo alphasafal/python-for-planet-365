@@ -1,0 +1,9 @@
+record_id,occurred_at,category,activity,quantity,unit,location,notes
+ok-001,2026-08-01T08:10:00+05:30,transport,City bus commute,12,kms,Vellore,Valid after unit normalization
+bad-time,2026-08-01T08:10:00,transport,City bus commute,12,km,Vellore,Timezone missing
+bad-category,2026-08-01T10:00:00+05:30,gaming,Console session,2,item,Vellore,Unsupported category
+bad-quantity,2026-08-02T12:00:00+05:30,food,Rice meal,-1,serving,Vellore,Negative quantity
+bad-unit,2026-08-02T14:00:00+05:30,electricity,Room electricity,4,kg,Vellore,Wrong unit
+,2026-08-03T09:00:00+05:30,waste,Plastic packaging,0.2,kg,Vellore,Missing ID
+bad-number,2026-08-03T11:00:00+05:30,waste,Food scraps,abc,kg,Vellore,Non numeric
+ok-002,2026-08-04T10:00:00Z,purchase,Notebook,1,item,Vellore,Valid UTC record

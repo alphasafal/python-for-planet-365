@@ -1,0 +1,9 @@
+record_id,occurred_at,category,activity,quantity,unit,location,notes
+act-001,2026-08-01T08:10:00+05:30,transport,City bus commute,12.4,km,Vellore,Shared public transport
+act-002,2026-08-01T19:30:00+05:30,electricity,Hostel room electricity,2.1,kWh,Vellore,Daily meter allocation estimate
+act-003,2026-08-02T12:45:00+05:30,food,Paneer meal,1,serving,Vellore,Vegetarian lunch
+act-004,2026-08-02T20:00:00+05:30,waste,Food scraps,0.18,kg,Vellore,Measured using kitchen scale
+act-005,2026-08-03T09:15:00+05:30,transport,Walk to class,1.7,kms,Vellore,Active transport
+act-006,2026-08-03T14:00:00+05:30,purchase,Reusable water bottle,1,item,Vellore,Durable purchase
+act-007,2026-08-04T07:30:00+05:30,food,Banana,2,item,Vellore,Breakfast fruit
+act-008,2026-08-04T18:00:00+05:30,waste,Paper recycling,0.6,kg,Vellore,Placed in recycling stream

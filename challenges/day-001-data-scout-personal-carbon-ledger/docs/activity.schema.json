@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/alphasafal/python-for-planet-365/day-001/activity.schema.json",
+  "title": "Personal Sustainability Activity Record",
+  "description": "Day 1 input contract. Passing this schema does not establish environmental impact.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["record_id", "occurred_at", "category", "activity", "quantity", "unit"],
+  "properties": {
+    "record_id": {"type": "string", "minLength": 1, "maxLength": 100},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "category": {"type": "string", "enum": ["transport", "electricity", "food", "waste", "purchase"]},
+    "activity": {"type": "string", "minLength": 1, "maxLength": 120},
+    "quantity": {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000000},
+    "unit": {"type": "string", "enum": ["km", "passenger_km", "litre", "kWh", "kg", "serving", "item", "INR"]},
+    "location": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  }
+}

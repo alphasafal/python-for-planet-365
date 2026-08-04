@@ -1,0 +1,32 @@
+{
+  "records": [
+    {
+      "record_id": "json-001",
+      "occurred_at": "2026-08-04T03:00:00Z",
+      "category": "electricity",
+      "activity": "Laptop charging",
+      "quantity": "0.08",
+      "unit": "kwh",
+      "location": "Vellore",
+      "notes": "Synthetic demonstration record"
+    },
+    {
+      "record_id": "json-002",
+      "occurred_at": "2026-08-04T06:30:00Z",
+      "category": "transport",
+      "activity": "College shuttle",
+      "quantity": "6.2",
+      "unit": "km",
+      "location": "Vellore"
+    },
+    {
+      "record_id": "json-003",
+      "occurred_at": "2026-08-04T12:30:00Z",
+      "category": "food",
+      "activity": "Dal and rice meal",
+      "quantity": "1",
+      "unit": "serving",
+      "location": "Vellore"
+    }
+  ]
+}

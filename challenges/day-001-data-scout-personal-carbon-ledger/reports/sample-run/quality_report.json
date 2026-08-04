@@ -1,0 +1,40 @@
+{
+  "accepted_breakdown": {
+    "by_category": {
+      "electricity": 1,
+      "food": 2,
+      "purchase": 1,
+      "transport": 2,
+      "waste": 2
+    },
+    "by_unit": {
+      "item": 2,
+      "kWh": 1,
+      "kg": 2,
+      "km": 2,
+      "serving": 1
+    }
+  },
+  "fitness_for_use": {
+    "condition": "Only accepted rows may enter later emissions calculations.",
+    "ready_for_day_2_baseline_analysis": true
+  },
+  "rejection_breakdown": {
+    "by_error_code": {},
+    "by_field": {}
+  },
+  "row_counts": {
+    "acceptance_rate_percent": 100.0,
+    "accepted": 8,
+    "accepted_with_transformations": 8,
+    "rejected": 0,
+    "total": 8
+  },
+  "schema_version": "1.0.0",
+  "source": {
+    "file": "sample_activities.csv",
+    "format": "csv",
+    "sha256": "6e2813853e467bf8c16dfd3f9ec3bcbe1d53c7a1054fe76e6578ff7c68b4c18b"
+  },
+  "warnings": []
+}
