@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: Python for Planet — 365
+message: Please cite this repository and the original datasets used.
+type: software
+authors:
+  - family-names: Gupta
+    given-names: Safal
+version: 0.1.0
+license: MIT
