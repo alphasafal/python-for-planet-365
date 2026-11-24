@@ -19,12 +19,18 @@ def build_quality_report(result: IngestionResult) -> dict[str, Any]:
 
     return {
         "schema_version": "1.0.0",
-        "source": {"file": result.source_file, "format": result.source_format, "sha256": result.source_sha256},
+        "source": {
+            "file": result.source_file,
+            "format": result.source_format,
+            "sha256": result.source_sha256,
+        },
         "row_counts": {
             "total": total,
             "accepted": len(result.accepted),
             "rejected": len(result.rejected),
-            "acceptance_rate_percent": round((len(result.accepted) / total * 100), 2) if total else 0.0,
+            "acceptance_rate_percent": round((len(result.accepted) / total * 100), 2)
+            if total
+            else 0.0,
             "accepted_with_transformations": transformed,
         },
         "accepted_breakdown": {
@@ -79,13 +85,19 @@ def report_to_markdown(report: dict[str, Any]) -> str:
     lines.extend(f"- {warning}" for warning in warnings)
     if not warnings:
         lines.append("- No common direct-identifier columns detected.")
-    lines.extend([
-        "",
-        "## Interpretation",
-        "",
-        "This report measures data fitness, not environmental impact. Carbon emissions are not calculated on Day 1 because emission-factor selection, geography, year and uncertainty must be handled explicitly in later stages.",
-        "",
-    ])
+    lines.extend(
+        [
+            "",
+            "## Interpretation",
+            "",
+            (
+                "This report measures data fitness, not environmental impact. Carbon emissions "
+                "are not calculated on Day 1 because emission-factor selection, geography, year "
+                "and uncertainty must be handled explicitly in later stages."
+            ),
+            "",
+        ]
+    )
     return "\n".join(lines)
 
 
@@ -102,7 +114,9 @@ def write_outputs(result: IngestionResult, output_dir: str | Path) -> dict[str, 
     _write_jsonl(accepted_path, [record.as_dict() for record in result.accepted])
     _write_jsonl(rejected_path, [record.as_dict() for record in result.rejected])
     report = build_quality_report(result)
-    report_json_path.write_text(json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    report_json_path.write_text(
+        json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8"
+    )
     report_md_path.write_text(report_to_markdown(report), encoding="utf-8")
 
     return {

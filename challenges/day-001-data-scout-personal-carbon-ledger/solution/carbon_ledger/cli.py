@@ -43,7 +43,9 @@ def main(argv: list[str] | None = None) -> int:
 
     report = build_quality_report(result)
     rows = report["row_counts"]
-    print(f"Ingested {rows['total']} rows: {rows['accepted']} accepted, {rows['rejected']} rejected.")
+    print(
+        f"Ingested {rows['total']} rows: {rows['accepted']} accepted, {rows['rejected']} rejected."
+    )
     print(f"Quality report: {paths['report_markdown']}")
     if args.fail_on_rejection and rows["rejected"]:
         return 2

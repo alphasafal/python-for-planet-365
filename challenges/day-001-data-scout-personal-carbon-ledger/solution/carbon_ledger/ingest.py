@@ -107,7 +107,9 @@ def ingest_file(
         )
         record, issues = validate_record(raw_record, provenance, duplicate_id=duplicate)
         if record is None:
-            result.rejected.append(RejectedRecord(raw_record=raw_record, issues=issues, provenance=provenance))
+            result.rejected.append(
+                RejectedRecord(raw_record=raw_record, issues=issues, provenance=provenance)
+            )
         else:
             result.accepted.append(record)
             seen_ids.add(record.record_id)

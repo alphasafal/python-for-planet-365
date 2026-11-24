@@ -99,7 +99,9 @@ def _parse_quantity(value: Any) -> tuple[Decimal | None, ValidationIssue | None]
     if not quantity.is_finite():
         return None, ValidationIssue("quantity", "not_finite", "Quantity must be finite.", value)
     if quantity <= 0:
-        return None, ValidationIssue("quantity", "out_of_range", "Quantity must be greater than zero.", value)
+        return None, ValidationIssue(
+            "quantity", "out_of_range", "Quantity must be greater than zero.", value
+        )
     if quantity > Decimal("1000000000"):
         return None, ValidationIssue(
             "quantity",
@@ -132,11 +134,19 @@ def validate_record(
     if not record_id:
         issues.append(ValidationIssue("record_id", "missing", "Record ID is required."))
     elif len(record_id) > 100:
-        issues.append(ValidationIssue("record_id", "too_long", "Record ID must be at most 100 characters."))
+        issues.append(
+            ValidationIssue("record_id", "too_long", "Record ID must be at most 100 characters.")
+        )
     elif duplicate_id:
-        issues.append(ValidationIssue("record_id", "duplicate", "Record ID already appeared in this input.", record_id))
+        issues.append(
+            ValidationIssue(
+                "record_id", "duplicate", "Record ID already appeared in this input.", record_id
+            )
+        )
 
-    occurred_at_utc, timestamp_issue, timestamp_changes = _parse_timestamp(raw_record.get("occurred_at"))
+    occurred_at_utc, timestamp_issue, timestamp_changes = _parse_timestamp(
+        raw_record.get("occurred_at")
+    )
     transformations.extend(timestamp_changes)
     if timestamp_issue:
         issues.append(timestamp_issue)
@@ -145,13 +155,22 @@ def validate_record(
     if not category:
         issues.append(ValidationIssue("category", "missing", "Category is required."))
     elif category not in ALLOWED_UNITS:
-        issues.append(ValidationIssue("category", "unsupported_category", f"Choose one of: {', '.join(sorted(ALLOWED_UNITS))}.", category))
+        issues.append(
+            ValidationIssue(
+                "category",
+                "unsupported_category",
+                f"Choose one of: {', '.join(sorted(ALLOWED_UNITS))}.",
+                category,
+            )
+        )
 
     activity = _text(raw_record.get("activity"))
     if not activity:
         issues.append(ValidationIssue("activity", "missing", "Activity is required."))
     elif len(activity) > 120:
-        issues.append(ValidationIssue("activity", "too_long", "Activity must be at most 120 characters."))
+        issues.append(
+            ValidationIssue("activity", "too_long", "Activity must be at most 120 characters.")
+        )
 
     quantity, quantity_issue = _parse_quantity(raw_record.get("quantity"))
     if quantity_issue:
@@ -162,7 +181,14 @@ def validate_record(
     if not unit:
         issues.append(ValidationIssue("unit", "missing", "Unit is required."))
     elif category in ALLOWED_UNITS and unit not in ALLOWED_UNITS[category]:
-        issues.append(ValidationIssue("unit", "unit_category_mismatch", f"Unit '{unit}' is not valid for category '{category}'.", unit))
+        issues.append(
+            ValidationIssue(
+                "unit",
+                "unit_category_mismatch",
+                f"Unit '{unit}' is not valid for category '{category}'.",
+                unit,
+            )
+        )
 
     unknown_fields = sorted(set(raw_record) - KNOWN_FIELDS)
     if unknown_fields:

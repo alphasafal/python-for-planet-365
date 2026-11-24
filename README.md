@@ -67,7 +67,7 @@ Every serious project should contain:
 
 SDG 1: 28 days, SDG 2: 21 days, SDG 3: 49 days, SDG 4: 43 days, SDG 5: 14 days, SDG 6: 77 days, SDG 7: 42 days, SDG 8: 57 days, SDG 9: 127 days, SDG 10: 42 days, SDG 11: 140 days, SDG 12: 98 days, SDG 13: 225 days, SDG 14: 42 days, SDG 15: 56 days, SDG 16: 42 days, SDG 17: 64 days
 
-See [`docs/SDG_COVERAGE.md`](docs/SDG_COVERAGE.md) for the full index.
+See [`ROADMAP.md`](ROADMAP.md) for the week-by-week project list.
 
 ## Recommended Python baseline
 

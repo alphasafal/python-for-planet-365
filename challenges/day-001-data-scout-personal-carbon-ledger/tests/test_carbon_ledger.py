@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from carbon_ledger.cli import main
 from carbon_ledger.ingest import ingest_file
 from carbon_ledger.models import Provenance
@@ -152,14 +151,20 @@ def test_reports_and_cli_contract(tmp_path: Path, fixed_clock) -> None:
     assert all(path.exists() for path in paths.values())
     assert json.loads(paths["report_json"].read_text())["row_counts"]["rejected"] == 6
 
-    code = main([
-        "ingest",
-        "--input", str(BASE / "data/raw/mixed_quality_activities.csv"),
-        "--output-dir", str(tmp_path / "cli-output"),
-        "--source-name", "CLI fixture",
-        "--license-note", "CC0 synthetic fixture",
-        "--fail-on-rejection",
-    ])
+    code = main(
+        [
+            "ingest",
+            "--input",
+            str(BASE / "data/raw/mixed_quality_activities.csv"),
+            "--output-dir",
+            str(tmp_path / "cli-output"),
+            "--source-name",
+            "CLI fixture",
+            "--license-note",
+            "CC0 synthetic fixture",
+            "--fail-on-rejection",
+        ]
+    )
     assert code == 2
 
 
