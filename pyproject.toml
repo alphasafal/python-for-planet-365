@@ -39,4 +39,4 @@ select = ["E", "F", "I", "B", "UP", "SIM"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-packages = ["planet365"]
+files = ["src/planet365"]
